@@ -1,0 +1,12 @@
+{% extends "coloring_book_app/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Your Coloring Page is Ready!</h2>
+    <p>Click the button below to download your coloring page.</p>
+    <a href="{{ coloring_page.url }}" download>
+        <button class="btn btn-primary">Download Coloring Page</button>
+    </a>
+    <p>Want to try again with a different image or settings? <a href="{% url 'upload' %}">Upload a new image</a>.</p>
+</div>
+{% endblock %}
