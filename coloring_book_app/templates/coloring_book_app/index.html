@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coloring Book App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'coloring_book_app/css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Coloring Book App</h1>
+        <p>Upload an image and convert it into a coloring book page in PDF format.</p>
+        <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image">
+            <button type="submit">Upload</button>
+        </form>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <script src="{% static 'coloring_book_app/js/scripts.js' %}"></script>
+</body>
+</html>
